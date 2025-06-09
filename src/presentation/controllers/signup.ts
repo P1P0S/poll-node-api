@@ -1,10 +1,9 @@
 import { type HttpRequest, type HttpResponse } from '../protocols/http'
 import { type Controller } from '../protocols/controller'
 import { MissingParamError } from '../errors/missing-param-error'
-import { badRequest } from '../helpers/http-helpers'
+import { badRequest, serverError } from '../helpers/http-helpers'
 import { type EmailValidator } from '../protocols/email-validator'
 import { InvalidParamError } from '../errors/invalid-param-error'
-import { ServerError } from '../errors/server-error'
 
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 export class SignUpController implements Controller {
@@ -33,10 +32,7 @@ export class SignUpController implements Controller {
         statusCode: 200, body: { message: 'Success' }
       }
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: new ServerError()
-      }
+      return serverError()
     }
   }
 }

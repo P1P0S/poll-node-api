@@ -1,9 +1,8 @@
 import { type HttpRequest, type HttpResponse } from '../protocols/http'
 import { type Controller } from '../protocols/controller'
-import { MissingParamError } from '../errors/missing-param-error'
+import { MissingParamError, InvalidParamError } from '../errors/'
 import { badRequest, serverError } from '../helpers/http-helpers'
 import { type EmailValidator } from '../protocols/email-validator'
-import { InvalidParamError } from '../errors/invalid-param-error'
 
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 export class SignUpController implements Controller {

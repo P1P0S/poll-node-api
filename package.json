@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "test": "jest --passWithNoTests",
-    "test:staged": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests --silent --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:unit": "pnpm test -- --watch -c jest-unit.config.ts",
+    "test:integration": "pnpm test -- --watch -c jest-integration.config.ts",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "keywords": [],
   "author": "",
